@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package funfact;
+
+import "common.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/tonytangau/cloud-native-rand/protos/funfact";
+
+service FunFactService {
+  rpc GetRandomFunFact(google.protobuf.Empty) returns (FunFactResponse);
+  rpc GetFunFactByCategory(common.CategoryRequest) returns (FunFactResponse);
+}
+
+message FunFactResponse {
+  string fact = 1;
+}

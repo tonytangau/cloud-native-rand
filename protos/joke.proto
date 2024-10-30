@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package joke;
+
+import "common.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/tonytangau/cloud-native-rand/protos/joke";
+
+service JokeService {
+  rpc GetRandomJoke(google.protobuf.Empty) returns (JokeResponse);
+  rpc GetJokeByCategory(common.CategoryRequest) returns (JokeResponse);
+}
+
+message JokeResponse {
+  string joke = 1;
+}
