@@ -5,6 +5,7 @@ import (
 	"log"
 	"net"
 
+	commonpb "github.com/tonytangau/cloud-native-rand/protos/common"
 	pb "github.com/tonytangau/cloud-native-rand/protos/joke"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -22,7 +23,7 @@ func (s *server) GetRandomJoke(ctx context.Context, in *emptypb.Empty) (*pb.Joke
 	return &pb.JokeResponse{Joke: joke}, nil
 }
 
-func (s *server) GetJokeByCategory(ctx context.Context, in *pb.CategoryRequest) (*pb.JokeResponse, error) {
+func (s *server) GetJokeByCategory(ctx context.Context, in *commonpb.CategoryRequest) (*pb.JokeResponse, error) {
 	category := in.Category
 	jokes := s.jokes[category]
 	if len(jokes) == 0 {

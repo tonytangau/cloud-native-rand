@@ -9,3 +9,7 @@ protoc \
   protos/common.proto \
   protos/joke.proto \
   protos/funfact.proto
+
+go get github.com/tonytangau/cloud-native-rand/protos
+go get google.golang.org/grpc
+go get google.golang.org/protobuf
